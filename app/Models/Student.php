@@ -23,4 +23,14 @@ class Student extends Model
     {
         return $this->belongsToMany(Role::class, 'role_student');
     }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function companyInfoWithPhone()
+    {
+        return $this->hasOneThrough(PhoneNumber::class, Company::class);
+    }
 }

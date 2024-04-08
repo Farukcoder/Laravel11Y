@@ -49,6 +49,21 @@ class StudentController extends Controller
         }
     }
 
+    public function getCompanyInfo()
+    {
+        $studentCompanyInfos = Student::with('company')->with('companyInfoWithPhone')->get();
+
+        foreach ($studentCompanyInfos as $studentCompanyInfo) {
+            echo 'Company Name: '. ($studentCompanyInfo->company->name ?? 'N/A') . "<br>";
+            echo 'Owner Name: '. $studentCompanyInfo->name . "<br>";
+            echo 'Owner Phone: '. ($studentCompanyInfo->companyInfoWithPhone->mobile ?? 'N/A') . "<br>";
+            echo "<hr>";
+        }
+
+
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
