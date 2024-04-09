@@ -15,6 +15,7 @@ Route::group(['prefix'=>'students'],function(){
     Route::get('/posts', [StudentController::class, 'getPost']);
     Route::get('/roles', [StudentController::class, 'getRole']);
     Route::get('/companies', [StudentController::class, 'getCompanyInfo']);
+    Route::get('/orders', [StudentController::class, 'latestOrder']);
 });
 Route::resource('posts', PostController::class);
 Route::resource('roles', RoleController::class);

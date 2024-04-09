@@ -64,6 +64,25 @@ class StudentController extends Controller
 
     }
 
+    public function latestOrder()
+    {
+        $latestOrders = Student::with('orders')->with('latestOrder')->get();
+
+        foreach ($latestOrders as $latestOrder) {
+            echo $latestOrder->name . '<br>';
+            echo $latestOrder->age . '<br>';
+            echo $latestOrder->gender . '<br>';
+
+            foreach ($latestOrder->orders as $order) {
+                echo $order->amount . '<br>';
+            }
+            echo 'Latest order amount: ' . $latestOrder->latestOrder->amount . '<br>';
+            echo "<hr>";
+        }
+
+        //return $latestOrders;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
