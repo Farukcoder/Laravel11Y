@@ -55,4 +55,14 @@ class Student extends Model
     {
         return $this->hasOne(Order::class)->ofMany('amount', 'min');
     }
+
+    public function countries()
+    {
+        return $this->belongsTo(Country::class, 'country_id','id');
+    }
+
+    public function studentWisePost()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

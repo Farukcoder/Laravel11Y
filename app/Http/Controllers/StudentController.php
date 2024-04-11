@@ -83,6 +83,13 @@ class StudentController extends Controller
         //return $latestOrders;
     }
 
+    public function countryWisePost()
+    {
+        $studentWisePost = Student::with('studentWisePost')->with('countries')->get();
+
+        return $studentWisePost;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
