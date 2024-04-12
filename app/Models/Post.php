@@ -9,8 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

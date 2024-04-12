@@ -12,9 +12,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $students = Post::with('student')->get();
+        //$students = Post::with('student')->get();
+        //
+        //return $students;
 
-        return $students;
+        $posts = Post::with('image')->get();
+
+        return $posts;
     }
 
     /**
@@ -22,7 +26,15 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $post = Post::create([
+            'student_id' => 1,
+            'title' => "This is title",
+            'description' => "This is description",
+        ]);
+
+        $post->image()->create([
+           'url' => 'images/post/post-one.jpg'
+        ]);
     }
 
     /**

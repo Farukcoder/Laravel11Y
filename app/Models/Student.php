@@ -9,6 +9,7 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id','created_at','updated_at'];
     public function contact()
     {
         return $this->hasOne(Contact::class);
@@ -64,5 +65,10 @@ class Student extends Model
     public function studentWisePost()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

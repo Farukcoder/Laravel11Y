@@ -18,6 +18,7 @@ Route::group(['prefix'=>'students'],function(){
     Route::get('/companies', [StudentController::class, 'getCompanyInfo']);
     Route::get('/orders', [StudentController::class, 'latestOrder']);
     Route::get('/country_posts', [StudentController::class, 'countryWisePost']);
+    Route::get('/images', [StudentController::class, 'studentWiseImage']);
 });
 Route::resource('posts', PostController::class);
 Route::resource('roles', RoleController::class);

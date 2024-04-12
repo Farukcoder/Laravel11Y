@@ -90,12 +90,28 @@ class StudentController extends Controller
         return $studentWisePost;
     }
 
+    public function studentWiseImage()
+    {
+        $studentImages = Student::with('image')->get();
+
+        return $studentImages;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $student = Student::create([
+            'country_id' => 1,
+            'name' => 'John Doe',
+            'age' => 25,
+            'gender' => 'M',
+        ]);
+
+        $student->image()->create([
+            'url' => 'images/student/student-one.jpg'
+        ]);
     }
 
     /**
@@ -103,7 +119,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
