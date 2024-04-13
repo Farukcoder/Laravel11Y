@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\JsonDataController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
@@ -28,5 +29,7 @@ Route::resource('roles', RoleController::class);
 Route::resource('countries',CountryController::class);
 Route::resource('videos',VideoController::class);
 Route::resource('tags',TagController::class);
+
+Route::resource('json_data', JsonDataController::class);
 
 Route::get('/contacts', [ContactController::class, 'show']);
