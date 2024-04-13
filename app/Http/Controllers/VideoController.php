@@ -17,7 +17,8 @@ class VideoController extends Controller
         // $videos = Video::with('latestComment')->get();
         // $videos = Video::with('oldestComment')->get();
 
-        $videos = Video::with('bestComment')->get();
+        // $videos = Video::with('bestComment')->get();
+        $videos = Video::with('leastComment')->get();
 
         return $videos;
     }

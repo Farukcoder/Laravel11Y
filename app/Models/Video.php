@@ -28,4 +28,8 @@ class Video extends Model
     {
         return $this->morphOne(comment::class, 'commentable')->ofMany('id', 'max');
     }
+    public function leastComment()
+    {
+        return $this->morphOne(comment::class, 'commentable')->ofMany('id', 'min');
+    }
 }
