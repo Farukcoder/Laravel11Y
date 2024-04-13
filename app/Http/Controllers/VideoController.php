@@ -12,7 +12,12 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::with('comments')->get();
+        // $videos = Video::with('comments')->get();
+        //
+        // $videos = Video::with('latestComment')->get();
+        // $videos = Video::with('oldestComment')->get();
+
+        $videos = Video::with('bestComment')->get();
 
         return $videos;
     }
