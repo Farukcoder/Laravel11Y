@@ -16,9 +16,11 @@ class PostController extends Controller
         //
         //return $students;
 
-        $posts = Post::with('image')->get();
+        // $posts = Post::with('image')->get();
 
-        return $posts;
+        $post = Post::with('tags')->get();
+
+        return $post;
     }
 
     /**
@@ -64,11 +66,33 @@ class PostController extends Controller
             ['detail' => "This is student 4 comment"],
         ];
 
-        collect($posts)->each(function ($post, $index) use ($images, $comments) {
+        $tags = [
+            [
+                'tag_name' => 'Bollywood'
+            ],
+            [
+                'tag_name' => 'Hollywood'
+            ],
+            [
+                'tag_name' => 'Salman Khan'
+            ],
+            [
+                'tag_name' => 'Dipika'
+            ],
+        ];
+
+
+
+        collect($posts)->each(function ($post, $index) use ($images, $comments, $tags) {
             $createPost = Post::create($post);
             $createPost->image()->create($images[$index]);
             $createPost->comments()->create($comments[$index]);
+            $createPost->tags()->create($tags[$index]);
         });
+
+        // $posts = Post::find(1);
+        //
+        // $posts->tags()->attach([1, 2, 3]);
 
     }
 

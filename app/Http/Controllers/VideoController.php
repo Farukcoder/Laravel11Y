@@ -18,9 +18,10 @@ class VideoController extends Controller
         // $videos = Video::with('oldestComment')->get();
 
         // $videos = Video::with('bestComment')->get();
-        $videos = Video::with('leastComment')->get();
+        // $videos = Video::with('leastComment')->get();
 
-        return $videos;
+        $video = Video::with('tags')->get();
+        return $video;
     }
 
     /**
@@ -47,6 +48,11 @@ class VideoController extends Controller
             $video->comments()->create($comments[$index]);
 
         }
+
+        // $video = Video::find(1);
+
+        // $video->tags()->attach([1,2]);
+        // $video->tags()->sync([1,2]);
     }
 
     /**
