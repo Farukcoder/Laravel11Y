@@ -5,6 +5,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,7 +22,9 @@ Route::group(['prefix'=>'students'],function(){
     Route::get('/images', [StudentController::class, 'studentWiseImage']);
 });
 Route::resource('posts', PostController::class);
+Route::get('/post_with_comment', [PostController::class, 'postWithComment']);
 Route::resource('roles', RoleController::class);
 Route::resource('countries',CountryController::class);
+Route::resource('videos',VideoController::class);
 
 Route::get('/contacts', [ContactController::class, 'show']);

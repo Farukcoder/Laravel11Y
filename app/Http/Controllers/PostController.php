@@ -26,15 +26,57 @@ class PostController extends Controller
      */
     public function create()
     {
-        $post = Post::create([
-            'student_id' => 1,
-            'title' => "This is title",
-            'description' => "This is description",
-        ]);
+        $posts = [
+            [
+                'student_id' => 2,
+                'title' => "This is title 1",
+                'description' => "This is description 1",
+            ],
+            [
+                'student_id' => 2,
+                'title' => "This is title 2",
+                'description' => "This is description 2",
+            ],
+            [
+                'student_id' => 1,
+                'title' => "This is title 3",
+                'description' => "This is description 3",
+            ],
+            [
+                'student_id' => 1,
+                'title' => "This is title 4",
+                'description' => "This is description 4",
+            ],
+        ];
 
-        $post->image()->create([
-           'url' => 'images/post/post-one.jpg'
-        ]);
+
+        $images = [
+            ['url' => 'images/post/post-one.jpg'],
+            ['url' => 'images/post/post-two.jpg'],
+            ['url' => 'images/post/post-three.jpg'],
+            ['url' => 'images/post/post-four.jpg'],
+        ];
+
+        $comments = [
+            ['detail' => "This is student 1 comment"],
+            ['detail' => "This is student 2 comment"],
+            ['detail' => "This is student 3 comment"],
+            ['detail' => "This is student 4 comment"],
+        ];
+
+        collect($posts)->each(function ($post, $index) use ($images, $comments) {
+            $createPost = Post::create($post);
+            $createPost->image()->create($images[$index]);
+            $createPost->comments()->create($comments[$index]);
+        });
+
+    }
+
+    public function postWithComment()
+    {
+        $posts =  Post::with('comments')->get();
+
+        return $posts;
     }
 
     /**
