@@ -14,11 +14,28 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $data = Student::where('age', 7)
-            ->withWhereHas('contact', function ($q) {
-                $q->where('city', 'Comilla, Bangladesh');
-            })
-            ->get();
+        // $data = Student::with('post')
+        //         ->active()
+        //         ->get();
+        // $data = Student::get(['name', 'age']);
+
+        // $data = Student::find(2, ['id', 'name']);
+        // $data = Student::find(2)->name;
+        // $data = Student::find(2)->value('name');
+
+        // $data = Student::with('post:title,description,student_id')
+        //         ->active()
+        //         ->get(['name', 'gender', 'id']);
+
+        // $data = Student::with([
+        //     "post" => function ($query) {
+        //         $query->select("student_id", "title", "description");
+        //     },
+        //     'contact' => function ($query) {
+        //         $query->select("student_id", "phone", "email");
+        //     }
+        // ])->get(["id", "name"]);
+
 
         return $data;
     }
@@ -102,16 +119,19 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $student = Student::create([
-            'country_id' => 1,
-            'name' => 'John Doe',
-            'age' => 25,
-            'gender' => 'M',
-        ]);
+        // $student = Student::create([
+        //     'country_id' => 1,
+        //     'name' => 'John Doe',
+        //     'age' => 25,
+        //     'gender' => 'M',
+        // ]);
+        //
+        // $student->image()->create([
+        //     'url' => 'images/student/student-one.jpg'
+        // ]);
 
-        $student->image()->create([
-            'url' => 'images/student/student-one.jpg'
-        ]);
+        Student::findOrfail(1)->delete();
+
     }
 
     /**

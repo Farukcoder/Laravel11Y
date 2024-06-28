@@ -71,4 +71,9 @@ class Student extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('country_id',2);
+    }
 }
